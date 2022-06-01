@@ -18,7 +18,7 @@ local_server_port = 587
 # Go on your google email sender account and enable "less secure apps"
 
 # My Local gmail user credentials
-sender_email = "wilyskouass@gmail.com"
+sender_email = "" 
 sender_password = getpass.getpass(prompt="Password ("+sender_email.strip()+"): ")
 
 # My ssl conetxt instead of using ssl files
@@ -26,20 +26,7 @@ ssl_context = ssl.create_default_context()
 message_body = """\
 <!DOCTYPE html>
 <body>
-    <p>Merci de t’être inscrit au cocktail dînatoire du mariage de Grâce et Daniel.</p>
-    <p>
-        <strong>Date:</strong> 10 septembre 2022 <br>
-        <strong>Heure :</strong> 18h00 GMT <br>
-        <strong>Lieu :</strong> Orxane Évent - Angré 7e trance, non loin de la pharmacie de la 7e tranche.<br>
-        <strong>Lien Google Map:</strong> cliquez <a href="https://goo.gl/maps/7mDjDQpdz2T4ZbeQA">ici</a> <br>
-    </p>
-    <div>
-        <strong style='color: red; font-size: 1rem'>NB:</strong> 
-        <span>Vu que nous avons un nombre de places strict à respecter, les cartes d’invitation seront nominatives et contrôlées à l’entrée.</span>
-    </div>
-    <p>
-        Dieu vous bénisse !
-    </p>
+Your HTML BOdy
 </body>
 </html>
 """
@@ -49,7 +36,7 @@ try:
         for emailadress in file.readlines():
             message = MIMEMultipart("alternative")
             message["from"] = sender_email
-            message["subject"] = "Confirmation d'inscription: WEDDING REGISTRATION"
+            message["subject"] = "<Edit this>"
             message_body_html = MIMEText(message_body,'html')
             message.attach(message_body_html)
             server = smtplib.SMTP(local_server,local_server_port)
